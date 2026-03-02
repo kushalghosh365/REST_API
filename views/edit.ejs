@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Name:<%= post.name%> </h1>
+    <h2>Id: <%=post.id%> </h2>
+    <h2>age:<%=post.age%> </h2>
+    <h1>Edit your Contant:</h1>
+    <form method="post" action="/posts/<%=post.id%>?_method=PATCH">
+        <textarea rows="10" cols="35" name="contant"><%= post.contant%></textarea> 
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
