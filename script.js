@@ -25,7 +25,7 @@ let posts = [
 let id = 2;
 
 app.get("/",(req, res)=>{
-    res.send("<h1>Go to the /posts page</h1>");
+    res.send(`<h1>Go to the /posts page</h1> <form action="/posts"> <button type="submit">See Posts</button>`);
 });
 
 

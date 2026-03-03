@@ -3,30 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Post Dashboard</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        
+        form.add-post-form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        form.add-post-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        form.add-post-form button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        form.add-post-form button:hover {
+            background-color: #219150;
+        }
+
+        
+        .posts-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .post-card {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #27ae60; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .post-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .post-content {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        
+        .post-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .post-actions a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        .post-actions a:hover {
+            text-decoration: underline;
+        }
+
+        
+        .delete-form button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-form button:hover {
+            background-color: #c0392b;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Wellcome</h1>
+    <h1>Welcome to Feed</h1>
 
-    <form method="post" action="/posts/add">
+    <form method="post" action="http://localhost:3000/posts/add">
         <input type="text" name="name" id="" placeholder="enter your name">
         <input type="text" name="age" placeholder="enter age">
         <input type="text" name="contant" placeholder="write your contant" style="width: 8cm; height: 2cm; margin: 2px;">
         <button type="submit">Add</button>
     </form>
 
-    <br>
-    <br>
-    <div>
+    <div class="posts-container">
         <% for(post of posts){%>
-        <div style="border: 2px solid green; margin: 1px;">
-            <h3>Name: <%= post.name%> || Age: <%=post.age%></h3>
+        <div class="post-card">
+            <h3><%= post.name%> <span style="font-weight: normal; color: #888; font-size: 14px;">(Age: <%=post.age%>)</span></h3>
             
-            <h3>Contant: <%= post.contant%></h3>
+            <p class="post-content"><%= post.contant%></p>
 
-            <a href="/posts/views/<%=post.id%>" style="margin: 4px;" >See in Detail</a>
-            <a href="/posts/<%=post.id%>/edit" style="margin: 4px;">Edit</a>
+            <a href="http://localhost:3000/posts/views/<%=post.id%>" style="margin: 4px;" >See in Detail</a>
+            <a href="http://localhost:3000/posts/<%=post.id%>/edit" style="margin: 4px;">Edit</a>
             
             <br>
             <br>  
@@ -36,5 +148,6 @@
         </div>
         <%}%>
     </div>
+
 </body>
 </html>
