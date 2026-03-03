@@ -25,7 +25,7 @@ let posts = [
 let id = 2;
 
 app.get("/",(req, res)=>{
-    res.send("<h1>Go to the /posts page</h1>");
+    res.send(`<h1>Go to the /posts page</h1> <form action="/posts"> <button type="submit">See Posts</button>`);
 });
 
 
@@ -40,7 +40,7 @@ app.post("/posts/add",(req, res)=>{
   id=id+1;
     
     posts.push({id, name, age, contant});
-    res.send(`<h1>ADD succesfull</h1> <form action="http://localhost:3000/posts"> <button type="submit">Go to Home</button></form>`);
+    res.send(`<h1>ADD succesfull</h1> <form action="/posts"> <button type="submit">Go to Home</button></form>`);
 })
 
 
@@ -67,7 +67,7 @@ app.patch("/posts/:id", (req, res)=>{
     let post = posts.find((p)=>id == p.id); 
     post.contant = newContent; 
     console.log(post); 
-    res.send(`<h1>EDIT succesfull</h1> <form action="http://localhost:3000/posts"> <button type="submit">Go to Home</button></form>`);
+    res.send(`<h1>EDIT succesfull</h1> <form action="/posts"> <button type="submit">Go to Home</button></form>`);
 });
 
 app.delete("/posts/:id", (req, res)=>{
